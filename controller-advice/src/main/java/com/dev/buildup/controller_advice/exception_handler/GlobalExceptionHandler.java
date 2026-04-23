@@ -10,19 +10,19 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<String> handleException(ResourceNotFoundException e) {
+    public ResponseEntity<String> handleResourceException(ResourceNotFoundException e) {
 
         return ResponseEntity.status(500).body("Resource Not Found: " + e.getMessage());
     }
 
     @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<String> handleException(UserNotFoundException e) {
+    public ResponseEntity<String> handleUserNotFoundException(UserNotFoundException e) {
 
         return ResponseEntity.status(500).body("User Not Found: " + e.getMessage());
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<String> handleException(Exception e) {
+    public ResponseEntity<String> handleGenericException(Exception e) {
 
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("General Exception: " + e.getMessage());
     }
